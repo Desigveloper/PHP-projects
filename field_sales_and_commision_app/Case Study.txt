@@ -1,0 +1,79 @@
+Company: Atomic Fish Hatchery, Inc.
+Project: Field Sales Ordering and Commission Application
+
+Scope: This application will be accessible from multiple devices (mobile and PC) to allow field sales agents, managers,
+and payroll personnel easy access to necessary information. The system will accept information from the sales agent that
+will be used to determine purchase costs to the customer, sales volume for the sales manager, and commissions for the
+payroll department. Phase one of the project is the development of the application to accept information from the sales agents,
+display purchase cost, determination of commissions, and storage of the information into a MySQL database.
+After successful testing the platform, it will be moved and secured in the company’s cloud platform.
+
+Inputs (from Sales Agent): Sales Agent Number, Customer Number, Order Number, Item Number, Quantity, and Special Needs
+
+Outputs: (Additional information may be determined for future phases)
+
+To database: In addition to the input from the sales agent: commission, sales total
+
+The goal is to determine the types of information and processes that will occur in
+each tier and the data flow between the tiers. Once determined, this information could be used
+to develop a general empty structure of tiers that would eventually hold the completed project.
+
+        
+        INTERFACE TIER
+    -----------------------
+ATFI Sales & Order Application Interface
+    - Platform: Microsoft Windows
+    - Versions: Mobile, Web, PC
+
+* Inputs/Outputs (dataset):
+    - Sales Agent Number(* Char Numberic)
+    - Customer Number (8 Char Numberic)
+    - +Order Number (6 Char Numberic)
+    - +Item Number (6 Char Numberic)
+    - +Quantity (6 Char Numberic)
+    - +Special Needs (40 Char Alphanumeric)
+
+* Methods:
+    - Verification of all Inputs
+    - Conversion of Quantity to integer format
+    - Creation of Dataset/Datatable and transfer to BR
+
+        BUSINESS RULES TIER
+    -----------------------------
+    Language: PHP
+*Inputs: Dataset (define by Interface Tier)
+* Outputs: (data within input fields)
+* Commission (6 chars floating point)
+* Total Sales (8 chars floating point)
+
+* Process 1:
+    - accept the complete order (dataset/data table)
+    - determine the total sales cost after the sales agent clicked a “competed order” button.
+    - return a summary of this information to the second form
+* Process 2:
+    - execute when the agent clicks an “approved” button
+    - determine the commission and create a dataset (there are now additional fields) to be passed to the data tier
+    - Information would then be passed for storage.
+
+* Methods:
+    - Validate or verification of fields received from IT to ensure data validity;
+    - Calculation of commission and Sales total
+    - Creation of Dataset/Datatable
+    - Transfer of Dataset to Interface Tier for Approval
+    - Transfer of Approved Dataset to Data Tier
+    - Check security of all data traferred between tiers before being processed
+
+
+        DATA TIER
+    -------------------
+Used to store the information provided by the business rules tier.
+The tier would verify the information received and store it into the database
+
+    Language: MySQL/MariaDB
+
+* Inputs: Data (defined by BR Tier)
+* Outputs: SQL Insert of Dataset fields
+
+* Methods:
+    - Verification of input dataset
+    - Creation and execution of SQL Insert for Dataset fields
