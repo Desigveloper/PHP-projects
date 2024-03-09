@@ -25,7 +25,7 @@
     echo "Numbers: $num1, $num2, $num3\n";
 
     // Writing output to a file
-    $fh = fopen("largest.txt", "a+");
+    $fh = fopen("largest_num.txt", "a+");
     $output = "$largest is the largest\n" . "Numbers: $num1, $num2, $num3\n";
 
     fwrite($fh, $output);
