@@ -1,5 +1,5 @@
 <?php
-    #Write a program to decide whether a student has passed an exam with a pass mark of 57
+    # a program to decide whether a student has passed an exam with a pass mark of 57
 
     $score = rand(0, 101);
 
