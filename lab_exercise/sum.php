@@ -6,7 +6,7 @@
         $total = 0;
 
         for ($i = 0; $i < 5; $i++) {
-            $numbers[$i] = readline("Enter number " .": ");
+            $numbers[$i] = readline("Enter number : ");
         }
 
         foreach($numbers as $number) {
