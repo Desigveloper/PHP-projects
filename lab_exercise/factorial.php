@@ -3,7 +3,7 @@
 
     function factorial($number) {
         if ($number < 0) {
-            echo "Invalid numbers. Only positive numbers 0 - 50 allowed\n";
+            echo -1 . "\n"; //Wrong value
             return null;
         }
         else if ($number > 50) {
@@ -15,7 +15,7 @@
             return null;
         }
         else if ($number == 0 || $number == 1) {
-            return 1;
+            return 1; // Terminate condition
         }
 
         return $number * factorial($number - 1);
@@ -23,5 +23,5 @@
 
     $number = readline("Enter number(0 - 50): ");
 
-    if (factorial($number))
+    if (factorial($number) && factorial(($number)) > 0)
         echo "Factorial of $number is " . factorial($number) . "\n";
